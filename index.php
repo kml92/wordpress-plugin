@@ -4,7 +4,7 @@
  * Plugin URI: ///
  * Description: This is your starter template for your next WordPress plugin.
  * Author: FYCLABS
- * Version: 1.1.1
+ * Version: 1.1.2
  *
  * Text Domain: wordpress-plugin
  *
