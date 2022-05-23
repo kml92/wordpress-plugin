@@ -19,5 +19,5 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once 'plugin-updater.php';
 if ( is_admin() ) {
-  new BFIGitHubPluginUpdater( __FILE__, 'myGitHubUsername', "Repo-Name" );
+  new BFIGitHubPluginUpdater( __FILE__, 'kml92', 'wordpress-plugin', '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' );
 }
