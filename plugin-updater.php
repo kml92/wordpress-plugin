@@ -36,10 +36,12 @@ class PDUpdater {
     }
 
     private function get_repository_info() {
+        // echo $this->github_response;
+        
         if (is_null($this->github_response)) {
             $request_uri = sprintf('https://api.github.com/repos/%s/%s/releases', $this->username, $this->repository);
-
             // Switch to HTTP Basic Authentication for GitHub API v3
+            
             $curl = curl_init();
 
             curl_setopt_array($curl, [
@@ -53,7 +55,7 @@ class PDUpdater {
                 CURLOPT_CUSTOMREQUEST => "GET",
                 CURLOPT_HTTPHEADER => [
                     "Authorization: token " . $this->authorize_token,
-                    "User-Agent: wordpress-plugin/1.2.3"
+                    "User-Agent: wordpress-plugin"
                 ]
             ]);
 
