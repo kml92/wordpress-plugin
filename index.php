@@ -18,7 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 require_once 'plugin-updater.php';
-// include_once plugin_dir_path(__FILE__) . '/path/to/PDUpdater.php';
 $updater = new PDUpdater(__FILE__);
 $updater->set_username('kml92');
 $updater->set_repository('wordpress-plugin');
