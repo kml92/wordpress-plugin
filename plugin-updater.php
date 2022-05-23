@@ -41,7 +41,6 @@ class PDUpdater {
         if (is_null($this->github_response)) {
             $request_uri = sprintf('https://api.github.com/repos/%s/%s/releases', $this->username, $this->repository);
             // Switch to HTTP Basic Authentication for GitHub API v3
-            
             $curl = curl_init();
 
             curl_setopt_array($curl, [
@@ -93,13 +92,16 @@ class PDUpdater {
                 if ($out_of_date) {
                     $new_files = $this->github_response['zipball_url'];
                     $slug = current(explode('/', $this->basename));
-
                     $plugin = [
                         'url' => $this->plugin['PluginURI'],
                         'slug' => $slug,
                         'package' => $new_files,
                         'new_version' => $this->github_response['tag_name']
                     ];
+                    echo '<pre>';
+                        print_r($plugin);
+                    echo '</pre>';
+                    exit;
 
                     $transient->response[$this->basename] = (object) $plugin;
                 }
@@ -147,6 +149,7 @@ class PDUpdater {
         global $wp_filesystem;
 
         $install_directory = plugin_dir_path($this->file);
+        
         $wp_filesystem->move($result['destination'], $install_directory);
         $result['destination'] = $install_directory;
 
