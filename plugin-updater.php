@@ -53,7 +53,7 @@ class PDUpdater {
                 CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                 CURLOPT_CUSTOMREQUEST => "GET",
                 CURLOPT_HTTPHEADER => [
-                    "Authorization: token " . $this->authorize_token,
+                    // "Authorization: token " . $this->authorize_token,
                     "User-Agent: wordpress-plugin"
                 ]
             ]);
@@ -68,9 +68,9 @@ class PDUpdater {
                 $response = current($response);
             }
 
-            if ($this->authorize_token) {
-                $response['zipball_url'] = add_query_arg('access_token', $this->authorize_token, $response['zipball_url']);
-            }
+            // if ($this->authorize_token) {
+            //     $response['zipball_url'] = add_query_arg('access_token', $this->authorize_token, $response['zipball_url']);
+            // }
 
             $this->github_response = $response;
         }
@@ -98,10 +98,10 @@ class PDUpdater {
                         'package' => $new_files,
                         'new_version' => $this->github_response['tag_name']
                     ];
-                    echo '<pre>';
-                        print_r($plugin);
-                    echo '</pre>';
-                    exit;
+                    // echo '<pre>';
+                    //     print_r($plugin);
+                    // echo '</pre>';
+                    // exit;
 
                     $transient->response[$this->basename] = (object) $plugin;
                 }
